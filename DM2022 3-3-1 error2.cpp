@@ -1,7 +1,7 @@
-#include <iostream>
-#include <vector>
 #include <cstring>
+#include <iostream>
 #include <queue>
+#include <vector>
 using namespace std;
 
 #define maxn 250
@@ -12,11 +12,10 @@ struct Edge {
     Edge(int u, int v, int c, int f) : from(u), to(v), cap(c), flow(f) {}
 };
 
-
 int n, m;
 vector<Edge> edges;
 vector<int> G[maxn];
-int a[maxn], p[maxn];  
+int a[maxn], p[maxn];
 
 int list[maxn];
 int listnum;
@@ -39,14 +38,15 @@ int Maxflow(int s, int t) {
         int x = Q.front();
         Q.pop();
         for (int i = 0; i < G[x].size(); i++) {
-            Edge& e = edges[G[x][i]];
+            Edge &e = edges[G[x][i]];
             if (!a[e.to] && e.cap > e.flow) {
                 p[e.to] = G[x][i];
                 a[e.to] = min(a[x], e.cap - e.flow);
                 Q.push(e.to);
             }
         }
-        if (a[t]) break;
+        if (a[t])
+            break;
     }
     if (!a[t])
         return -1;
@@ -65,31 +65,22 @@ int Maxflow(int s, int t) {
 
 int s, t;
 
-
-int main()
-{
+int main() {
     cin >> n >> m >> s >> t;
     // cout << m << endl;
-    for(int i = 0; i < m; i++)
-    {
+    for (int i = 0; i < m; i++) {
         int u, v, c, f;
         cin >> u >> v >> c >> f;
         // cout << i << endl;
         AddEdge(u, v, c, f);
     }
     int result = Maxflow(s, t);
-    if(result == -1)
+    if (result == -1)
         cout << -1 << endl;
-    else
-    {
+    else {
         cout << listnum << " " << result << endl;
-        for(int i = listnum-1; i >= 0; i--)
-        {
+        for (int i = listnum - 1; i >= 0; i--) {
             cout << list[i] << " ";
         }
-
     }
-
-
-
 }

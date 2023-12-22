@@ -1,6 +1,6 @@
+#include <assert.h>
 #include <stdio.h>
 #include <string.h>
-#include <assert.h>
 
 const int INF = 0x3fffffff;
 const int MAXN = 40;
@@ -28,16 +28,14 @@ public:
     int Capacity(/*TODO*/) { return /* TODO */; }
 
     // 添加一条从 u 到 v 的单向边，容量为 c，流量为 f
-    void AddEdge(int u, int v, int c, int f) {
-        /* TODO */
-    }
+    void AddEdge(int u, int v, int c, int f) { /* TODO */ }
 } G;
 
 //
 // 适用于 Ford-Fulkerson 算法的标号过程，基于深度优先搜索给所有结点标号
 //
 void label_dfs(int u) {
-    for (each v/* TODO: 枚举每一个 v 满足 (u, v) 在图中 */) {
+    for (each v /* TODO: 枚举每一个 v 满足 (u, v) 在图中 */) {
         // 如果 v 访问过，跳过该结点
         if (direction[v] != 0)
             continue;
@@ -62,7 +60,7 @@ void label_bfs() {
     q[tl++] = s; // 第一个搜索源点
     while (hd < tl) {
         int u = q[hd++]; // 按入队顺序取出未标号结点
-        for (each v/* TODO: 枚举每一个 v 满足 (u, v) 在图中 */) {
+        for (each v /* TODO: 枚举每一个 v 满足 (u, v) 在图中 */) {
             // 如果 v 访问过，跳过该结点
             if (direction[v] != 0)
                 continue;
